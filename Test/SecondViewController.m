@@ -8,6 +8,7 @@
 
 #import "SecondViewController.h"
 #import <SDAutoLayout/SDAutoLayout.h>
+#import "UIView+Common.h"
 
 @interface SecondViewController ()
 
@@ -26,6 +27,8 @@
     [super viewDidLoad];
     
     [self setupUI];
+    [self setupCorners];
+    [self setupShadows];
 }
 
 #pragma mark - private methods
@@ -60,6 +63,19 @@
     .topSpaceToView(self.btn, 25)
     .widthIs(100)
     .heightIs(80);
+}
+
+- (void)setupCorners
+{
+    [self.bgView lq_cornerRadius:10 byRoundingCorners:UIRectCornerTopLeft | UIRectCornerBottomLeft | UIRectCornerBottomRight];
+    [self.imgView lq_cornerRadius:10 byRoundingCorners:UIRectCornerTopLeft  | UIRectCornerBottomRight];
+}
+
+- (void)setupShadows
+{
+    [self.bgView lq_horizontalShaodwRadius:10 shadowColor:[[UIColor blackColor] colorWithAlphaComponent:0.5] shadowOffset:CGSizeMake(0, 1)];
+    
+    [self.imgView lq_verticalShaodwRadius:10 shadowColor:[[UIColor blackColor] colorWithAlphaComponent:0.5] shadowOffset:CGSizeMake(0, 1)];
 }
 
 #pragma mark - getters and setters

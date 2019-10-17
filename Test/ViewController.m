@@ -29,6 +29,7 @@
     [super viewDidLoad];
   
     [self setupUI];
+    [self setupShadows];
     [self setupCorners];
 }
 
@@ -77,8 +78,13 @@
 - (void)setupCorners
 {
     [self.bgView lq_cornerRadius:8];
-    [self.btn lq_cornerRadius:10 byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight];
     [self.imgView lq_cornerRadius:10 byRoundingCorners:UIRectCornerTopLeft | UIRectCornerBottomLeft | UIRectCornerBottomRight];
+}
+
+- (void)setupShadows
+{
+    [self.bgView lq_shadow];
+    [self.imgView lq_verticalShaodwRadius:10 shadowColor:[[UIColor blackColor] colorWithAlphaComponent:0.5] shadowOffset:CGSizeMake(0, 1)];
 }
 
 #pragma mark - getters and setters
@@ -87,7 +93,7 @@
 {
     if (_bgView == nil) {
         _bgView = [[UIView alloc] init];
-        _bgView.backgroundColor = [UIColor redColor];
+        _bgView.backgroundColor = [UIColor whiteColor];
     }
     
     return _bgView;
